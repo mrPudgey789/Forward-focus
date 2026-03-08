@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #10183A;
+  --color-navy-light: #1B2550;
+  --color-xeneta-50: #EEF2FF;
+  --color-xeneta-100: #DBE4FF;
+  --color-xeneta-400: #5B8AFF;
+  --color-xeneta-500: #135DFF;
+  --color-xeneta-600: #0E4BD6;
+  --color-xeneta-700: #0A3AAD;
+  --color-offwhite: #F4F4F6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
