@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import {
   Target, Rocket, Users, Palette, Check,
-  ChevronRight, Calendar, TrendingUp
+  ChevronRight, ChevronDown, Calendar, TrendingUp
 } from 'lucide-react'
 import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis,
@@ -48,6 +48,7 @@ export default function App() {
   // ── Goal state ──────────────────────────────────────────────────────────────
 
   const [goals, setGoals] = useState({
+    expanded: {},
     focusAreas: [
       {
         id: 'free-tier',
@@ -126,7 +127,7 @@ export default function App() {
         title: 'Team Elevation & Visibility',
         icon: 'users',
         description:
-          'Elevate team design quality through structured UX critique on team calls, run the monthly Product Showcase, and produce product videos that support customer education and demand generation.',
+          'Elevate team design quality through structured UX critique on team calls and run the monthly Product Showcase to strengthen cross-company alignment.',
         milestones: [
           { text: 'Led structured UX critique in 3 team calls', done: false },
           { text: 'Led structured UX critique in 6 team calls', done: false },
@@ -135,8 +136,6 @@ export default function App() {
           { text: 'Ran 4 Product Showcases', done: false },
           { text: 'Ran 8 Product Showcases', done: false },
           { text: 'Ran 12 Product Showcases', done: false },
-          { text: 'Produced 1 product video for external use', done: false },
-          { text: 'Produced 2 product videos for external use', done: false },
         ],
       },
     ],
@@ -149,7 +148,6 @@ export default function App() {
       { id: 'ds-components', goal: 'Design System',          metric: 'New components contributed',     target: '10',       current: '0',            status: 'not-started' },
       { id: 'ux-critiques',  goal: 'UX Critiques Led',       metric: 'Structured critiques on team calls', target: '12',  current: '0',            status: 'not-started' },
       { id: 'showcases',     goal: 'Product Showcases',      metric: 'Showcases run',                  target: '12',       current: '2',            status: 'on-track' },
-      { id: 'videos',        goal: 'Product Videos',         metric: 'Videos produced',                target: '2',        current: '0',            status: 'not-started' },
     ],
   })
 
@@ -196,6 +194,13 @@ export default function App() {
     }))
   }
 
+  function toggleExpanded(goalId) {
+    setGoals(prev => ({
+      ...prev,
+      expanded: { ...prev.expanded, [goalId]: !prev.expanded[goalId] },
+    }))
+  }
+
   // ── Intersection observer for active nav ────────────────────────────────────
 
   useEffect(() => {
@@ -233,6 +238,9 @@ export default function App() {
   const overallProgress = radarData.length
     ? Math.round(radarData.reduce((sum, d) => sum + d.progress, 0) / radarData.length)
     : 0
+
+  const RING_RADIUS = 34
+  const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS
 
   // ── Icon map ────────────────────────────────────────────────────────────────
 
@@ -292,20 +300,47 @@ export default function App() {
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-xeneta-500/15 rounded-full blur-[128px] -translate-y-1/2 translate-x-1/3" />
 
         <div className="relative max-w-6xl mx-auto px-6 py-24 md:py-32">
-          <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 text-xeneta-400 text-sm font-medium mb-6">
-              <Calendar className="w-4 h-4" />
-              <span>2026 Goals & Development</span>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-10">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 text-xeneta-400 text-sm font-medium mb-6">
+                <Calendar className="w-4 h-4" />
+                <span>2026 Goals & Development</span>
+              </div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] mb-4">
+                James Peel
+              </h1>
+              <p className="text-lg text-slate-400 mb-2">
+                Senior Product Designer at Xeneta
+              </p>
+              <p className="text-xl md:text-2xl text-slate-300 font-light mt-6 leading-relaxed">
+                Turning complex problems into products people actually use.
+              </p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight leading-[1.1] mb-4">
-              James Peel
-            </h1>
-            <p className="text-lg text-slate-400 mb-2">
-              Senior Product Designer at Xeneta
-            </p>
-            <p className="text-xl md:text-2xl text-slate-300 font-light mt-6 leading-relaxed">
-              Turning complex problems into products people actually use.
-            </p>
+            <div className="flex flex-col items-center gap-3 shrink-0">
+              <svg className="w-28 h-28" viewBox="0 0 80 80">
+                <circle
+                  cx="40" cy="40" r={RING_RADIUS}
+                  fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="5"
+                />
+                <circle
+                  cx="40" cy="40" r={RING_RADIUS}
+                  fill="none" stroke="#135DFF" strokeWidth="5"
+                  strokeLinecap="round"
+                  strokeDasharray={RING_CIRCUMFERENCE}
+                  strokeDashoffset={RING_CIRCUMFERENCE * (1 - overallProgress / 100)}
+                  transform="rotate(-90 40 40)"
+                  className="transition-all duration-700 ease-out"
+                  style={{ filter: 'drop-shadow(0 0 6px rgba(19, 93, 255, 0.4))' }}
+                />
+                <text x="40" y="36" textAnchor="middle" dominantBaseline="central" fill="white" fontSize="20" fontWeight="700">
+                  {overallProgress}%
+                </text>
+                <text x="40" y="52" textAnchor="middle" dominantBaseline="central" fill="#94a3b8" fontSize="8" fontWeight="500" letterSpacing="1">
+                  OVERALL
+                </text>
+              </svg>
+              <span className="text-sm text-slate-400 font-medium">Progress</span>
+            </div>
           </div>
         </div>
       </section>
@@ -319,6 +354,7 @@ export default function App() {
               const Icon = iconMap[area.icon] || Rocket
               const progress = calcProgress(area.milestones)
               const doneCount = area.milestones.filter(m => m.done).length
+              const isOpen = goals.expanded[area.id]
               return (
                 <div
                   key={area.id}
@@ -344,10 +380,21 @@ export default function App() {
                     doneCount={doneCount}
                     totalCount={area.milestones.length}
                   />
-                  <MilestoneList
-                    milestones={area.milestones}
-                    onToggle={i => toggleFocusMilestone(area.id, i)}
-                  />
+                  <button
+                    onClick={() => toggleExpanded(area.id)}
+                    className="flex items-center gap-2 text-sm text-xeneta-500 font-medium mt-1 mb-2 hover:text-xeneta-600 transition-colors cursor-pointer"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                    {isOpen ? 'Hide milestones' : `Show milestones (${doneCount} of ${area.milestones.length} complete)`}
+                  </button>
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                    <div className="overflow-hidden">
+                      <MilestoneList
+                        milestones={area.milestones}
+                        onToggle={i => toggleFocusMilestone(area.id, i)}
+                      />
+                    </div>
+                  </div>
                 </div>
               )
             })}
@@ -364,6 +411,7 @@ export default function App() {
               const Icon = iconMap[g.icon] || Target
               const progress = calcProgress(g.milestones)
               const doneCount = g.milestones.filter(m => m.done).length
+              const isOpen = goals.expanded[g.id]
               return (
                 <div
                   key={g.id}
@@ -379,10 +427,21 @@ export default function App() {
                     doneCount={doneCount}
                     totalCount={g.milestones.length}
                   />
-                  <MilestoneList
-                    milestones={g.milestones}
-                    onToggle={i => toggleGrowthMilestone(g.id, i)}
-                  />
+                  <button
+                    onClick={() => toggleExpanded(g.id)}
+                    className="flex items-center gap-2 text-sm text-xeneta-500 font-medium mt-1 mb-2 hover:text-xeneta-600 transition-colors cursor-pointer"
+                  >
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                    {isOpen ? 'Hide milestones' : `Show milestones (${doneCount} of ${g.milestones.length} complete)`}
+                  </button>
+                  <div className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
+                    <div className="overflow-hidden">
+                      <MilestoneList
+                        milestones={g.milestones}
+                        onToggle={i => toggleGrowthMilestone(g.id, i)}
+                      />
+                    </div>
+                  </div>
                 </div>
               )
             })}
@@ -398,11 +457,29 @@ export default function App() {
             Overall progress: <span className="font-bold text-xeneta-500">{overallProgress}%</span>
           </p>
           <div className="mt-10 flex justify-center">
-            <div className="w-full max-w-lg h-80">
+            <div className="w-full max-w-2xl h-[400px]">
               <ResponsiveContainer width="100%" height="100%">
-                <RadarChart data={radarData} outerRadius="75%">
+                <RadarChart data={radarData} outerRadius="58%">
                   <PolarGrid stroke="#e2e8f0" />
-                  <PolarAngleAxis dataKey="area" tick={{ fontSize: 12, fill: '#64748b' }} />
+                  <PolarAngleAxis
+                    dataKey="area"
+                    tick={(props) => {
+                      const datum = radarData.find(d => d.area === props.payload.value)
+                      const pct = datum ? datum.progress : 0
+                      const textAnchor = props.x > props.cx + 5 ? 'start' : props.x < props.cx - 5 ? 'end' : 'middle'
+                      const dy = props.y > props.cy ? 12 : props.y < props.cy ? -4 : 0
+                      return (
+                        <g>
+                          <text x={props.x} y={props.y + dy} textAnchor={textAnchor} fill="#475569" fontSize={14} fontWeight={500}>
+                            {props.payload.value}
+                          </text>
+                          <text x={props.x} y={props.y + dy + 17} textAnchor={textAnchor} fill="#135DFF" fontSize={13} fontWeight={600}>
+                            {pct}%
+                          </text>
+                        </g>
+                      )
+                    }}
+                  />
                   <PolarRadiusAxis angle={90} domain={[0, 100]} tick={{ fontSize: 10, fill: '#94a3b8' }} />
                   <Radar
                     name="Progress"
@@ -672,7 +749,7 @@ const DEV_PLAN_DATA = [
     label: 'Social learning',
     accent: 'text-amber-600',
     items: [
-      'Mentor 2 designers through structured feedback and pairing',
+      'Lead structured UX critique sessions on team calls',
       'Run monthly Product Showcase',
       'Collaborate with CS and Sales teams on indexing adoption barriers',
       'Participate in cross-functional workshops on futures and derivatives positioning',
