@@ -57,14 +57,15 @@ export default function App() {
         description:
           'Leading design end-to-end for a new free version of the Xeneta platform, from discovery through to launch in Q2 2026. This is Xeneta\u2019s first self-serve acquisition channel.',
         smartGoal:
-          'Design and deliver the Free Tier experience from discovery to launch by end of Q2 2026, validated through task completion sessions and achieving a SUS score of A (excellent usability).',
+          'Design and validate the Free Tier experience from discovery through Q2 2026, achieving a task completion rate of 90% or above for core onboarding and activation flows (measured via moderated testing on a coded prototype) and a SUS score of A (excellent usability).',
         milestones: [
           { text: 'Discovery research complete (user interviews, competitor audit)', done: false },
           { text: 'Jobs-to-be-done and user segmentation defined', done: false },
           { text: 'Core free-tier experience designed (what\u2019s free vs paid)', done: false },
           { text: 'Onboarding flow designed and tested', done: false },
           { text: 'Sign-up and activation flow designed', done: false },
-          { text: 'Task completion session run and baseline completion rate recorded', done: false },
+          { text: 'Coded prototype built for testing', done: false },
+          { text: 'Task completion session run on coded prototype (target: 90%+ completion rate on core flows)', done: false },
           { text: 'Design handed off to engineering', done: false },
           { text: 'Free Tier launched', done: false },
           { text: 'Mini SUS survey run on Free Tier', done: false },
@@ -79,14 +80,14 @@ export default function App() {
         description:
           'Improving the UX of the Index-Linked Contract Simulator and Live Contract Manager to drive adoption of index-linked contracts, measured through customer confidence scores and task completion rates.',
         smartGoal:
-          'Improve the Simulator and Live Contract Manager UX based on workshop findings, increasing the customer "Confidence in taking action from data" score from 3/5 to 4/5 and improving task completion rates for key indexing workflows.',
+          'Improve the Simulator and Live Contract Manager UX, increasing the customer "Confidence in taking action from data" score from 3/5 to 4/5 and achieving a task completion rate of 90% or above for key indexing workflows (measured via moderated testing sessions using Qualtrics or Pendo), by end of 2026.',
         milestones: [
           { text: 'Workshop findings prioritised into design roadmap', done: false },
           { text: 'Baseline "Confidence in taking action from data" score captured via survey (Qualtrics or Pendo)', done: false },
           { text: 'Baseline task completion rate recorded for key indexing workflows', done: false },
           { text: 'First round of Simulator UX improvements shipped (guidance, framing, education)', done: false },
           { text: 'Second round of improvements shipped (collaboration, sharing, chart readability)', done: false },
-          { text: 'Follow-up task completion analysis run post-improvements', done: false },
+          { text: 'Follow-up task completion session run (target: 90%+ completion rate on key flows)', done: false },
           { text: 'Follow-up confidence survey run post-improvements', done: false },
           { text: '"Confidence in taking action from data" improved from 3/5 to 4/5', done: false },
         ],
@@ -142,11 +143,12 @@ export default function App() {
     ],
     metrics: [
       { id: 'ft-launch',      goal: 'Free Tier Launch',          metric: 'Launched on time',                                    target: 'Q2 2026',                                current: 'In progress',  status: 'in-progress' },
-      { id: 'ft-task',        goal: 'Free Tier Task Completion', metric: 'Task completion rate',                                target: 'Baseline recorded, then improved post-launch', current: '-',       status: 'not-started' },
+      { id: 'ft-task',        goal: 'Free Tier Task Completion', metric: 'Task completion rate on core flows (coded prototype)', target: '90%+',                                       current: '-',       status: 'not-started' },
       { id: 'ft-sus',         goal: 'Free Tier Usability',      metric: 'SUS score',                                           target: 'A',                                      current: '-',            status: 'not-started' },
       { id: 'ix-confidence',  goal: 'Indexing Confidence',      metric: 'Confidence in taking action from data',               target: '4/5',                                    current: '3/5',          status: 'in-progress' },
-      { id: 'ix-task',        goal: 'Indexing Task Completion',  metric: 'Task completion rate',                                target: 'Improved post-redesign',                 current: '-',            status: 'not-started' },
+      { id: 'ix-task',        goal: 'Indexing Task Completion',  metric: 'Task completion rate on key workflows',               target: '90%+',                                   current: '-',            status: 'not-started' },
       { id: 'ds-audit',       goal: 'Design System',            metric: 'Audit and documentation complete',                    target: 'Done',                                   current: '-',            status: 'not-started' },
+      { id: 'paywall-ux',     goal: 'Paywall UX Research',      metric: 'Inspiration board compiled',                          target: 'Done',                                   current: '-',            status: 'not-started' },
       { id: 'ai-session',     goal: 'AI Design Session',        metric: 'Session delivered to team',                           target: '1',                                      current: '0',            status: 'not-started' },
       { id: 'ux-deck',        goal: 'UX Metrics Deck',          metric: 'Presented to design team',                            target: '1',                                      current: '0',            status: 'not-started' },
       { id: 'showcases',      goal: 'Product Showcases',        metric: 'Showcases run',                                       target: '12',                                     current: '2',            status: 'on-track' },
