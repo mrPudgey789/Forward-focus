@@ -57,16 +57,19 @@ export default function App() {
         description:
           'Leading design end-to-end for a new free version of the Xeneta platform, from discovery through to launch in Q2 2026. This is Xeneta\u2019s first self-serve acquisition channel.',
         smartGoal:
-          'Design and deliver the Free Tier experience from discovery to launch by end of Q2 2026, targeting 500 free sign-ups within the first 3 months and a 10% conversion rate to paid plans.',
+          'Design and deliver the Free Tier experience from discovery to launch by end of Q2 2026, validated through task completion sessions and achieving a SUS score of A (excellent usability).',
         milestones: [
           { text: 'Discovery research complete (user interviews, competitor audit)', done: false },
           { text: 'Jobs-to-be-done and user segmentation defined', done: false },
           { text: 'Core free-tier experience designed (what\u2019s free vs paid)', done: false },
           { text: 'Onboarding flow designed and tested', done: false },
           { text: 'Sign-up and activation flow designed', done: false },
+          { text: 'Task completion session run and baseline completion rate recorded', done: false },
           { text: 'Design handed off to engineering', done: false },
           { text: 'Free Tier launched', done: false },
-          { text: 'Post-launch data reviewed and iteration plan created', done: false },
+          { text: 'Mini SUS survey run on Free Tier', done: false },
+          { text: 'Post-launch task completion rate measured and compared to baseline', done: false },
+          { text: 'Post-launch iteration plan created based on UX data', done: false },
         ],
       },
       {
@@ -74,21 +77,18 @@ export default function App() {
         title: 'Indexing: Simulator & Live Contract Manager',
         icon: 'trending',
         description:
-          'Improving the UX of the Index-Linked Contract Simulator and Live Contract Manager to drive adoption of index-linked contracts, with a platform target of 300 contracts managed by end of 2026.',
+          'Improving the UX of the Index-Linked Contract Simulator and Live Contract Manager to drive adoption of index-linked contracts, measured through customer confidence scores and task completion rates.',
         smartGoal:
-          'Redesign onboarding, education, and guidance flows within the Simulator based on workshop findings, targeting a 40% increase in simulation-to-contract conversion rate and contributing to 300 contracts managed in-platform by end of 2026.',
+          'Improve the Simulator and Live Contract Manager UX based on workshop findings, increasing the customer "Confidence in taking action from data" score from 3/5 to 4/5 and improving task completion rates for key indexing workflows.',
         milestones: [
           { text: 'Workshop findings prioritised into design roadmap', done: false },
-          { text: 'First-time user guidance and framing redesigned', done: false },
-          { text: 'Regional vs port-level explanation flow improved', done: false },
-          { text: 'Basic/Advanced mode split simplified or removed', done: false },
-          { text: 'Inline explanations set to visible by default', done: false },
-          { text: 'Index calculation day logic redesigned with proactive recommendations', done: false },
-          { text: 'Long-term market context surfaced alongside short-term indexes', done: false },
-          { text: 'Chart readability improved with adaptive defaults', done: false },
-          { text: 'Saving and sharing features made more discoverable', done: false },
-          { text: 'Rule-sharing between counterparties designed', done: false },
-          { text: 'Post-improvement adoption metrics reviewed', done: false },
+          { text: 'Baseline "Confidence in taking action from data" score captured via survey (Qualtrics or Pendo)', done: false },
+          { text: 'Baseline task completion rate recorded for key indexing workflows', done: false },
+          { text: 'First round of Simulator UX improvements shipped (guidance, framing, education)', done: false },
+          { text: 'Second round of improvements shipped (collaboration, sharing, chart readability)', done: false },
+          { text: 'Follow-up task completion analysis run post-improvements', done: false },
+          { text: 'Follow-up confidence survey run post-improvements', done: false },
+          { text: '"Confidence in taking action from data" improved from 3/5 to 4/5', done: false },
         ],
       },
     ],
@@ -98,9 +98,10 @@ export default function App() {
         title: 'Strategic Influence',
         icon: 'target',
         description:
-          'Lead design strategy across Free Tier and Indexing, define UX success metrics, and present design direction to leadership quarterly.',
+          'Lead design strategy across Free Tier and Indexing, define UX success metrics, and present design direction to leadership quarterly. Includes competitive research into feature lock and paywall patterns to inform the Free Tier experience.',
         milestones: [
           { text: 'UX success metrics defined for Free Tier and Indexing', done: false },
+          { text: 'Compiled inspiration board of feature lock / paywall UX patterns across SaaS tools', done: false },
           { text: 'Q1 design direction presented to leadership', done: false },
           { text: 'Q2 design direction presented to leadership', done: false },
           { text: 'Q3 design direction presented to leadership', done: false },
@@ -113,13 +114,15 @@ export default function App() {
         title: 'Design System Ownership',
         icon: 'palette',
         description:
-          'Own and evolve the Compass design system to support Free Tier and Indexing, contribute 10+ new components, and establish governance practices.',
+          'Audit and strengthen the Compass design system with a focus on consistency, documentation, edge cases, and governance rather than net-new components.',
+        smartGoal:
+          'Complete a full audit of the Compass design system, document edge cases and usage guidelines for core components, and establish a governance process to drive consistency across teams.',
         milestones: [
-          { text: 'Audit current Compass components for gaps', done: false },
-          { text: '5 new components contributed', done: false },
-          { text: '10 new components contributed', done: false },
+          { text: 'Audit existing Compass components for inconsistencies and gaps', done: false },
+          { text: 'Document edge cases, dos and don\u2019ts for core components', done: false },
+          { text: 'Push for consistency across teams through design reviews', done: false },
           { text: 'Governance process documented and shared with team', done: false },
-          { text: 'Cross-team adoption reviewed at end of year', done: false },
+          { text: 'Cross-team adoption and consistency reviewed at end of year', done: false },
         ],
       },
       {
@@ -127,12 +130,10 @@ export default function App() {
         title: 'Team Elevation & Visibility',
         icon: 'users',
         description:
-          'Elevate team design quality through structured UX critique on team calls and run the monthly Product Showcase to strengthen cross-company alignment.',
+          'Share knowledge on AI-assisted design and UX measurement with the design team, and run the monthly Product Showcase to strengthen cross-company alignment.',
         milestones: [
-          { text: 'Led structured UX critique in 3 team calls', done: false },
-          { text: 'Led structured UX critique in 6 team calls', done: false },
-          { text: 'Led structured UX critique in 9 team calls', done: false },
-          { text: 'Led structured UX critique in 12 team calls (monthly)', done: false },
+          { text: 'Run AI-assisted design session for designers (e.g., designing with Claude Code)', done: false },
+          { text: 'Present UX metrics deck to design team', done: false },
           { text: 'Ran 4 Product Showcases', done: false },
           { text: 'Ran 8 Product Showcases', done: false },
           { text: 'Ran 12 Product Showcases', done: false },
@@ -140,14 +141,15 @@ export default function App() {
       },
     ],
     metrics: [
-      { id: 'ft-launch',     goal: 'Free Tier Launch',       metric: 'Launched on time',              target: 'Q2 2026',  current: 'In progress',  status: 'in-progress' },
-      { id: 'ft-signups',    goal: 'Free Tier Sign-ups',     metric: 'Sign-ups in first 3 months',    target: '500',      current: '-',            status: 'not-started' },
-      { id: 'ft-conversion', goal: 'Free Tier Conversion',   metric: 'Free to paid conversion',       target: '10%',      current: '-',            status: 'not-started' },
-      { id: 'ix-contracts',  goal: 'Indexing Contracts',      metric: 'Contracts managed in platform', target: '300',      current: '~50',          status: 'in-progress' },
-      { id: 'ix-simulator',  goal: 'Simulator Conversion',   metric: 'Simulation-to-contract rate',   target: '+40%',     current: 'Baseline TBD', status: 'not-started' },
-      { id: 'ds-components', goal: 'Design System',          metric: 'New components contributed',     target: '10',       current: '0',            status: 'not-started' },
-      { id: 'ux-critiques',  goal: 'UX Critiques Led',       metric: 'Structured critiques on team calls', target: '12',  current: '0',            status: 'not-started' },
-      { id: 'showcases',     goal: 'Product Showcases',      metric: 'Showcases run',                  target: '12',       current: '2',            status: 'on-track' },
+      { id: 'ft-launch',      goal: 'Free Tier Launch',          metric: 'Launched on time',                                    target: 'Q2 2026',                                current: 'In progress',  status: 'in-progress' },
+      { id: 'ft-task',        goal: 'Free Tier Task Completion', metric: 'Task completion rate',                                target: 'Baseline recorded, then improved post-launch', current: '-',       status: 'not-started' },
+      { id: 'ft-sus',         goal: 'Free Tier Usability',      metric: 'SUS score',                                           target: 'A',                                      current: '-',            status: 'not-started' },
+      { id: 'ix-confidence',  goal: 'Indexing Confidence',      metric: 'Confidence in taking action from data',               target: '4/5',                                    current: '3/5',          status: 'in-progress' },
+      { id: 'ix-task',        goal: 'Indexing Task Completion',  metric: 'Task completion rate',                                target: 'Improved post-redesign',                 current: '-',            status: 'not-started' },
+      { id: 'ds-audit',       goal: 'Design System',            metric: 'Audit and documentation complete',                    target: 'Done',                                   current: '-',            status: 'not-started' },
+      { id: 'ai-session',     goal: 'AI Design Session',        metric: 'Session delivered to team',                           target: '1',                                      current: '0',            status: 'not-started' },
+      { id: 'ux-deck',        goal: 'UX Metrics Deck',          metric: 'Presented to design team',                            target: '1',                                      current: '0',            status: 'not-started' },
+      { id: 'showcases',      goal: 'Product Showcases',        metric: 'Showcases run',                                       target: '12',                                     current: '2',            status: 'on-track' },
     ],
   })
 
@@ -422,6 +424,14 @@ export default function App() {
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{g.title}</h3>
                   <p className="text-sm text-slate-600 leading-relaxed mb-5">{g.description}</p>
+                  {g.smartGoal && (
+                    <div className="bg-xeneta-50 rounded-2xl p-4 mb-5">
+                      <p className="text-xs font-semibold text-xeneta-600 uppercase tracking-wide mb-1">
+                        SMART Goal
+                      </p>
+                      <p className="text-sm text-slate-700 leading-relaxed">{g.smartGoal}</p>
+                    </div>
+                  )}
                   <ProgressBar
                     progress={progress}
                     doneCount={doneCount}
@@ -739,7 +749,8 @@ const DEV_PLAN_DATA = [
     accent: 'text-xeneta-500',
     items: [
       'Lead Free Tier end-to-end from concept to launch',
-      'Drive Simulator UX improvements based on workshop research',
+      'Drive Simulator and Live Contract Manager UX improvements based on workshop research',
+      'Run task completion sessions and customer confidence surveys to measure UX impact',
       'Define and track UX success metrics independently from commercial targets',
       'Present design direction to leadership quarterly',
     ],
@@ -749,10 +760,10 @@ const DEV_PLAN_DATA = [
     label: 'Social learning',
     accent: 'text-amber-600',
     items: [
-      'Lead structured UX critique sessions on team calls',
+      'Run AI-assisted design session for the design team',
+      'Present UX metrics deck to designers',
       'Run monthly Product Showcase',
       'Collaborate with CS and Sales teams on indexing adoption barriers',
-      'Participate in cross-functional workshops on futures and derivatives positioning',
     ],
   },
   {
