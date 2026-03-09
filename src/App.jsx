@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import {
   Target, Rocket, Users, Palette, Check,
-  ChevronRight, ChevronDown, Calendar, TrendingUp
+  ChevronRight, ChevronDown, Calendar, TrendingUp, Lock
 } from 'lucide-react'
 import {
   RadarChart, Radar, PolarGrid, PolarAngleAxis,
@@ -42,7 +42,60 @@ const NAV_ITEMS = [
 
 // ─── Main component ────────────────────────────────────────────────────────────
 
+const SITE_PASSWORD = 'Xeneta2026'
+
 export default function App() {
+  const [authed, setAuthed] = useState(() => sessionStorage.getItem('ff-auth') === 'true')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState(false)
+
+  function handleLogin(e) {
+    e.preventDefault()
+    if (password === SITE_PASSWORD) {
+      sessionStorage.setItem('ff-auth', 'true')
+      setAuthed(true)
+    } else {
+      setError(true)
+    }
+  }
+
+  if (!authed) {
+    return (
+      <div className="min-h-screen bg-navy flex items-center justify-center px-6">
+        <div className="w-full max-w-sm">
+          <div className="rounded-[2.5rem] shadow-[0_8px_24px_rgba(0,0,0,0.3)] bg-white p-10">
+            <div className="flex flex-col items-center mb-8">
+              <div className="p-3 rounded-2xl bg-xeneta-50 text-xeneta-500 mb-4">
+                <Lock className="w-6 h-6" />
+              </div>
+              <h1 className="text-xl font-bold text-slate-900">Forward Focus 2026</h1>
+              <p className="text-sm text-slate-500 mt-1">Enter password to continue</p>
+            </div>
+            <form onSubmit={handleLogin}>
+              <input
+                type="password"
+                value={password}
+                onChange={e => { setPassword(e.target.value); setError(false) }}
+                placeholder="Password"
+                autoFocus
+                className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-xeneta-500 focus:border-transparent"
+              />
+              {error && (
+                <p className="text-red-500 text-xs mt-2">Incorrect password</p>
+              )}
+              <button
+                type="submit"
+                className="w-full mt-4 py-3 rounded-xl bg-xeneta-500 text-white text-sm font-semibold hover:bg-xeneta-600 transition-colors cursor-pointer"
+              >
+                Enter
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const [activeSection, setActiveSection] = useState('')
 
   // ── Goal state ──────────────────────────────────────────────────────────────
